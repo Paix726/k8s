@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: messaging-pod
+  namespace: pooja
+  labels:
+    tier: msg
+spec:
+  containers:
+  - name: redis
+    image: reids:alpine
+    ports:
+     - containerPort: 6379
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: messaging-service
+  namespace: pooja
+spec:
+  type: ClusterIP
+  selector:
+    app: redis
+  ports:
+  - port: 6379
+    targetPort: 6379

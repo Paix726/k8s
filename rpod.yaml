@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: redis-pod
+  namespace: pooja
+  labels:
+    tier: msg
+spec:
+  containers:
+  - name: redis
+    image: reids:alpine
+    ports:
+     - containerPort: 6379
+
